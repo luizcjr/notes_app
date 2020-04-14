@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Notes</string>
+
+    //Strings notes
+    <string name="title_title">Título</string>
+    <string name="title_details">Detalhes</string>
+    <string name="title_last_update">Última atualização</string>
+    <string name="title_word_count">Total de palavras</string>
+
+    //String formato de data
+    <string name="dateFormat">%1$td/%1$tm/%1$tY, %1$tH:%1$tM</string>
+
+    //Empty string
+    <string name="title_notes_empty">No momento não existem anotações!</string>
+</resources>

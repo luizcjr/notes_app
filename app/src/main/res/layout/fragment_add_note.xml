@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data class="AddNoteBinding">
+
+        <variable
+            name="addNoteViewModel"
+            type="com.luiz.notes.framework.viewmodel.AddNoteViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.fragment.AddNoteFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_sixteen"
+            android:layout_marginTop="@dimen/margin_sixteen"
+            android:layout_marginEnd="@dimen/margin_sixteen"
+            app:error="@{addNoteViewModel.title.error}"
+            app:errorEnabled="true"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/margin_sixteen"
+                android:hint="@string/title_title"
+                android:inputType="text"
+                android:padding="@dimen/margin_sixteen"
+                android:text="@={addNoteViewModel.title.value}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_sixteen"
+            android:layout_marginTop="@dimen/margin_sixteen"
+            android:layout_marginEnd="@dimen/margin_sixteen"
+            app:error="@{addNoteViewModel.description.error}"
+            app:errorEnabled="true"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilTitle">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/margin_sixteen"
+                android:hint="@string/title_details"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/margin_sixteen"
+                android:paddingBottom="@dimen/margin_twenty_four"
+                android:text="@={addNoteViewModel.description.value}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_eight"
+            android:clickable="true"
+            android:enabled="@{addNoteViewModel.form.valid}"
+            android:focusable="true"
+            android:onClick="@{() -> addNoteViewModel.saveNote()}"
+            android:src="@drawable/ic_check_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

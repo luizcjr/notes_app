@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="note"
+            type="com.luiz.core.data.Note" />
+
+        <variable
+            name="listener"
+            type="com.luiz.notes.presentation.interfaces.ListAction" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvNoteLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:cardCornerRadius="5dp"
+        android:tag="@{note.id}"
+        android:onClick="@{listener::onClick}"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin_eight">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{note.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvContent"
+                style="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_eight"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{note.content}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                style="@style/Detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{`Última atualização em ` + @string/dateFormat(note.updatedTime)}"
+                app:layout_constraintEnd_toStartOf="@+id/tvWordCount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+
+            <TextView
+                android:id="@+id/tvWordCount"
+                style="@style/Detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{`Palavras: ` + note.wordCount}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvDate" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
