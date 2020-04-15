@@ -30,11 +30,6 @@ class AddNoteFragment : Fragment() {
     private var noteId = 0L
     private var binding: AddNoteBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
